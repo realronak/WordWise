@@ -1,0 +1,14 @@
+# Protect dotfiles and version control
+RedirectMatch 404 /\.git
+RedirectMatch 404 /\.env
+
+# Block access to sensitive extensions
+<FilesMatch "^\.|\.(env|sql|log|bak|sh)$">
+    Require all denied
+</FilesMatch>
+
+# Route sitemap.xml to sitemap.php
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^sitemap\.xml$ sitemap.php [L]
+</IfModule>

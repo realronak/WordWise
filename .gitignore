@@ -1,0 +1,23 @@
+# Local development files and sensitive artifacts
+*.sql
+!database/*.sql
+!database/migrations/*.sql
+*.sql.gz
+*.bak
+*.log
+.env
+.env.*
+!.env.example
+setup_stack.sh
+import_db.sh
+start_server.sh
+stop_server.sh
+*.local.php
+node_modules/
+package-lock.json
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

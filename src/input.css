@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  body {
+    @apply bg-paper-50 text-ink-900 dark:bg-paper-950 dark:text-ink-100 font-sans transition-colors duration-200;
+  }
+
+  ::selection {
+    @apply bg-accent/20 text-ink-950 dark:bg-accent/30 dark:text-ink-50;
+  }
+
+  /* Accessible focus indicators */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-paper-50 dark:ring-offset-paper-950;
+  }
+}
+
+@layer components {
+  /* Typewriter aesthetic borders & badges */
+  .typewriter-badge {
+    @apply font-mono text-xs tracking-wider uppercase border border-ink-900/10 dark:border-ink-100/15 px-2 py-0.5 rounded-sm;
+  }
+
+  .editorial-card {
+    @apply bg-white dark:bg-paper-900 border border-paper-200 dark:border-paper-800 transition-all duration-200 hover:border-ink-900/40 dark:hover:border-ink-100/40;
+  }
+
+  .reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: #c25e38;
+    width: 0%;
+    z-index: 9999;
+    transition: width 0.1s ease-out;
+  }
+
+  /* JetBrains Mono Article Reading Styles */
+  .prose {
+    font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  }
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .prose p, .prose li, .prose blockquote {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styling */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  header, footer, nav, .no-print {
+    display: none !important;
+  }
+  article {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+}
